@@ -1,9 +1,9 @@
 # EXPERIMENT-NO--04-Distance measurement using Ultrasonic sensor
- ###  DATE: 
+ ###  DATE: 11.03.2024
 
-###  NAME: 
-###  ROLL NO :
-###  DEPARTMENT:
+###  NAME: Dharshini DS
+###  ROLL NO : 212221230022
+###  DEPARTMENT: AIDS
 ## AIM: 
 To interface an ultrasonic pair and measure the distance in centimeters , calculate the error
  
@@ -60,32 +60,72 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 
 ### PROGRAM 
 ```
+const int trigpin=10;
+const int echopin=9;
+int red=7;
+int green=6;
+long duration;
+float distance;
+void setup()
+{
+pinMode(trigpin, OUTPUT);
+pinMode(echopin, INPUT);
+pinMode(red, OUTPUT);
+pinMode(green, OUTPUT);
+Serial.begin(9600);
+}
+void loop()
+{
+digitalWrite(trigpin,LOW);
+delay(20);
+digitalWrite(trigpin,HIGH);
+delay(20);
+digitalWrite(trigpin,LOW);
+duration=pulseIn(echopin,HIGH);
+distance=duration*(0.034/2);
+Serial.print(distance);
+Serial.println("cms");
+if(distance>5)
+{
+digitalWrite(red,HIGH);
+delay(20);
+digitalWrite(red,LOW);
+delay(20);
+}
+else
+{
+digitalWrite(green,HIGH);
+delay(200);
+digitalWrite(green,HIGH);
+delay(200);
+}
+}
+
+```
+### Circuit Diagram:
 
 
+![533ex4](https://github.com/Dharshini-DS/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/93427345/42a2e56e-8d01-4ff3-8e13-1cd0a13ab654)
 
 
+### Schematic Diagram:
 
 
-
-
-
-
-`````````
+![533ex4i](https://github.com/Dharshini-DS/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/93427345/6b51f6ae-8d20-4951-bcec-0305e8059f79)
 
 
 ### Distance vs measurement table 
 
-			
- 
-			
-			
-			
 
-![image](https://user-images.githubusercontent.com/36288975/190135379-52ebacd5-ccd5-460f-a4cd-4d0ad1d9b179.png)
+![533ex4j](https://github.com/Dharshini-DS/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/93427345/ffc63a33-0bb0-430b-b0c3-edce8c8f2375)
 
-			
-			
-			
+
+### Graph:
+
+
+![533ex4k](https://github.com/Dharshini-DS/Experiment--04-Interfacing-digital-output-with-arduino-ultrasonic-sensor/assets/93427345/82583f59-2e9f-42f1-b6e8-a7dd982a0964)
+
+						
 			
 			
 			Average error = sum/ number of readings 
@@ -94,12 +134,7 @@ speed of sound in the air at 20ºC (68ºF) = 343m/s
 
 
 
-
-
-
-
 ### RESULTS
 
-
-
+Thus the Error value between the actual value and measured value is calculated with the help of ultrasonic sensor.
  
